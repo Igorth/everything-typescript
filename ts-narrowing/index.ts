@@ -65,26 +65,44 @@
 
 ////////////////////////////////////////////////////////////////
 // OPERADOR IN
-class Dog {
-  name;
-  breed;
+// class Dog {
+//   name;
+//   breed;
 
-  constructor(name: string, breed?: string) {
-    this.name = name;
-    if (breed) [(this.breed = breed)];
+//   constructor(name: string, breed?: string) {
+//     this.name = name;
+//     if (breed) [(this.breed = breed)];
+//   }
+// }
+
+// const turca = new Dog('Turca');
+// const soda = new Dog('Soda', 'Labrador');
+
+// function showDogDetails(dog: Dog) {
+//   if ('breed' in dog) {
+//     console.log(`Dog ${dog.name} has ${dog.breed}`);
+//   } else {
+//     console.log(`Dog has no breed`);
+//   }
+// }
+
+// showDogDetails(turca);
+// showDogDetails(soda);
+
+////////////////////////////////////////////////////////////////
+// DESAFIO 3
+
+type Review = number | boolean;
+function reviewUser(review: Review) {
+  if (!review) {
+    console.log('Não enviou review');
+    return;
   }
+  console.log(`Review: ${review}`);
 }
-
-const turca = new Dog('Turca');
-const soda = new Dog('Soda', 'Labrador');
-
-function showDogDetails(dog: Dog) {
-  if ('breed' in dog) {
-    console.log(`Dog ${dog.name} has ${dog.breed}`);
-  } else {
-    console.log(`Dog has no breed`);
-  }
-}
-
-showDogDetails(turca);
-showDogDetails(soda);
+reviewUser(false);
+reviewUser(1);
+reviewUser(2);
+reviewUser(3);
+reviewUser(4);
+reviewUser(5);
