@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './App.module.css';
 
 // Components
 import Header from './components/Header';
@@ -8,7 +9,9 @@ function App() {
   return (
     <div>
       <Header />
-      <h1>Conteudo...</h1>
+      <main className={styles.main}>
+        <h1>Conteudo...</h1>
+      </main>
       <Footer />
     </div>
   );
