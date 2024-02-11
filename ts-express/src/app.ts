@@ -31,6 +31,31 @@ app.get('/api/interfaces', (req: Request, res: Response) => {
     message: 'Hello World',
   });
 });
+
+app.get('/api/json', (req: Request, res: Response) => {
+  return res.json({
+    name: 'shirt',
+    price: 33,
+    color: 'blue',
+    sizes: ['P', 'M', 'G'],
+  });
+});
+
+app.get('/api/product/:id', (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  if (id === '1') {
+    const product = {
+      id: 1,
+      name: 'Butter',
+      price: 10,
+    };
+    return res.json(product);
+  } else {
+    return res.send('Product');
+  }
+});
+
 app.listen(3000, () => {
   console.log('Server running on port 3000');
 });
