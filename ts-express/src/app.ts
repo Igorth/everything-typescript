@@ -26,7 +26,11 @@ app.all('/api/product/check', (req, res) => {
 });
 
 // Interface do express
-
+app.get('/api/interfaces', (req: Request, res: Response) => {
+  return res.json({
+    message: 'Hello World',
+  });
+});
 app.listen(3000, () => {
   console.log('Server running on port 3000');
 });
