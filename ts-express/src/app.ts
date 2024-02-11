@@ -111,6 +111,15 @@ app.get(
   }
 );
 
+app.get('/api/error', (req: Request, res: Response) => {
+  try {
+    // logica da rota
+    throw new Error('Algo deu errado');
+  } catch (e: any) {
+    return res.status(500).json({ error: e.message });
+  }
+});
+
 app.listen(3000, () => {
   console.log('Server running on port 3000');
 });
