@@ -4,6 +4,15 @@ const app = express();
 
 app.use(express.json());
 
+// Middleware em todas as rotas
+// Todo middlware temos que ter a função NEXT sendo executada
+function showPath(req: Request, res: Response, next: NextFunction) {
+  console.log(req.path);
+  next();
+}
+
+app.use(showPath);
+
 app.get('/', (req, res) => {
   return res.send('foo');
 });
@@ -88,6 +97,19 @@ app.get('/api/user/:id/access', checkUser, (req: Request, res: Response) => {
     msg: 'Área administrativa',
   });
 });
+
+app.get(
+  '/api/user/:id/details/:name',
+  (
+    req: Request<{ id: string; name: string }>,
+    res: Response<{ status: boolean }>
+  ) => {
+    console.log(req.params.id);
+    console.log(req.params.name);
+
+    return res.json({ status: true });
+  }
+);
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
