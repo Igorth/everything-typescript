@@ -65,6 +65,14 @@ app.get('/api/product/:id/review/:reviewId', (req: Request, res: Response) => {
   return res.send(`O review ${reviewId} do ID do produto ${productId}`);
 });
 
+// Router Handler
+function getUser(req: Request, res: Response) {
+  console.log('Resgatando o usuário com o ID: ' + req.params.id);
+
+  return res.send('Usuário encontrado');
+}
+app.get('/api/user/:id', getUser);
+
 app.listen(3000, () => {
   console.log('Server running on port 3000');
 });
