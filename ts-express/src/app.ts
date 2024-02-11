@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 
 const app = express();
 
@@ -72,6 +72,22 @@ function getUser(req: Request, res: Response) {
   return res.send('Usuário encontrado');
 }
 app.get('/api/user/:id', getUser);
+
+// Middleware
+function checkUser(req: Request, res: Response, next: NextFunction) {
+  if (req.params.id === '1') {
+    console.log('Pode seguir!');
+    next();
+  } else {
+    console.log('Acesso Restrito');
+    return res.status(403).send('Acesso Restrito');
+  }
+}
+app.get('/api/user/:id/access', checkUser, (req: Request, res: Response) => {
+  return res.json({
+    msg: 'Área administrativa',
+  });
+});
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
