@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import {
   createMovie,
+  deleteMovieById,
   findMovieById,
   getAllMovies,
 } from './controllers/movieControllers';
@@ -17,4 +18,5 @@ export default router
   })
   .post('/movie', movieCreateValidation(), validate, createMovie)
   .get('/movie/:id', findMovieById)
-  .get('/movie', getAllMovies);
+  .get('/movie', getAllMovies)
+  .delete('/movie/:id', deleteMovieById);
